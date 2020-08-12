@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="meta">
     </head>
+    <script type="text/javascript" th:src="@{/js/web/home.js}"></script>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">조준형</a>
+            <a class="navbar-brand" >조준형</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -12,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/jojun94">GitHub</a>
@@ -30,7 +31,7 @@
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <div class="container">
-                    <h2 class="display-3">신림 친목 서비스</h2>
+                    <h2 class="display-4">신림 친목 서비스</h2>
                     <!--<p>`Spring Boot` , `REST API` , `REST Templet`, `JPA`, `AMQP`, `Docker`, `AWS` 등의 기술을 학습 및 체득 하기 위한 프로젝트이다. </p>-->
                     <p>이 프로젝트는 `Spring Boot` , `REST API` , `REST Templet`, `JPA`, `AMQP`, `Docker`, `AWS` 등의 기술을 학습 및 체득 하기 위한 프로젝트이다. </p>
                     <p> `API Server`, `Client`, 2개의 아키텍처로 구성되어 있으며 데이터 흐름도 및 단위 기능 실행 화면은 GitHub에 수록하였다. </p>
@@ -45,12 +46,12 @@
                     <div class="col-md-5">
                         <h3>친구 추가하기</h3>
                         <p>친구의 정보를 입력하여 목록에 추가합니다. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">추가하기 &raquo;</a></p>
+                        <p><a class="btn btn-primary" id="btnAdd" role="button" data-toggle="modal" data-target="#addUserModal">추가하기 &raquo;</a></p>
                     </div>
                     <div class="col-md-5">
                         <h3>친구 조회하기</h3>
                         <p>친구의 목록을 조회하거나 수정 또는 삭제 합니다. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">조회하기 &raquo;</a></p>
+                        <p><a class="btn btn-primary" th:href="@{/user/list}" id="btnSearch" role="button">조회하기 &raquo;</a></p>
                     </div>
                     <!--<div class="col-md-4">
                         <h2>예비 컨텐츠 1</h2>
@@ -66,4 +67,49 @@
         </main>
 
     </body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">친구 추가하기</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">구분</th>
+                                <th scope="col">입력</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>이름</td>
+                                <td><input type="text" id="modalName"></td>
+                            </tr>
+                            <tr>
+                                <td>나이</td>
+                                <td><input type="number" id="modalAge"></td>
+                            </tr>
+                            <tr>
+                                <td>지역</td>
+                                <td><input type="text" id="modalLocale"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">창 닫기</button>
+                    <button type="button" class="btn btn-primary" id="btnModalSave">추가하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </html>
