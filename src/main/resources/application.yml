@@ -6,3 +6,10 @@ spring:
     prefix: classpath:templates/
     suffix: .html
     cache: false
+  # 실서버 배포시에는 이 옵션을 개발서버와 실서버용으로 분리시켜야 한다.
+  # 템플릿을 캐시하지 않으면 서버 터지는걸 볼 수 있다
+  devtools:
+    livereload:
+      enabled: true
+    freemarker:
+      cache: flase
