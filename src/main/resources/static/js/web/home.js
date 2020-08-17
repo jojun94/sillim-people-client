@@ -1,10 +1,29 @@
+var userData = null;
 $(document).ready(function(){
 
     $('#btnModalSave').click(function(event){
         /*ajax*/
-        alert("저장되었습니다!");
+        userData = {
+                       user_name : $("#modalName").val(),
+                       user_age : $("#modalAge").val(),
+                       user_locale : $("#modalLocale").val()
+                   };
         $.ajax({
-
+            type: 'POST',
+            url: 'AddUser',
+            data : userData,
+            dataType : 'json',
+            success : function(json){
+                      if(json.success == "true"){
+                      alert("저장되었습니다.");
+                      }
+                      else{
+                      alert("저장 실패!");
+                      }
+            },
+            error : function(){
+            alert("API Call Fail!");
+            }
         });
     });
 

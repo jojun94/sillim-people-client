@@ -1,17 +1,20 @@
 package net.jojun.sillimpeople.endpoint;
 
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.google.gson.JsonObject;
+import com.rabbitmq.tools.json.JSONUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by JOJUN.
@@ -46,5 +49,51 @@ public class UserController {
 //        System.out.println(obj); JPA 연동후 오브젝트로 받기
 
         return result.getBody();
+    }
+
+    @RequestMapping(value = "/AddUser", method = RequestMethod.POST)
+    public String user_add(@ModelAttribute("user_name") String name,
+                           @ModelAttribute("user_age") String age,
+                           @ModelAttribute("user_locale") String locale){
+        boolean isSuccess = false;
+        String url = baseUrl + "AddUser";
+        RestTemplate restTemplate = new RestTemplate();
+
+
+//        Map headers_info = new HashMap<String, String>();
+//        headers_info.put("Content-Type", "application/json");
+//        headers.setAll(headers_info);
+
+        HttpHeaders headers = new HttpHeaders();
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        System.out.println("########## : "+ headers.toString());
+
+        map.add("name",name);
+        map.add("age", age);
+        map.add("locale",locale);
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+        System.out.println("################## : "+ request.toString());
+
+        ResponseEntity<String> response = restTemplate.postForEntity( url, request , String.class );
+
+        JsonObject jsonObject = new JsonObject();
+
+        if(response.getStatusCode() == HttpStatus.OK){
+            jsonObject.addProperty("success", "true");
+            return jsonObject.toString();
+        }
+        else{
+            jsonObject.addProperty("success", "false");
+            return jsonObject.toString();
+        }
+        /* Map to Json -> common */
+        /*JsonObject jsonObject = new JsonObject();
+        for( Map.Entry<String, String> entry : result_code.entrySet() ) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            jsonObject.addProperty(key, value);
+        }*/
     }
 }
