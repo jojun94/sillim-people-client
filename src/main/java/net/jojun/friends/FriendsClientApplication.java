@@ -1,4 +1,4 @@
-package net.jojun.sillimpeople;
+package net.jojun.friends;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Date: 2020-07-07
  */
 @SpringBootApplication
-public class SillimPeopleClientApplication {
+public class FriendsClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SillimPeopleClientApplication.class, args);
+        SpringApplication.run(FriendsClientApplication.class, args);
     }
 
 

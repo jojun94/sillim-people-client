@@ -1,4 +1,5 @@
 var userData = null;
+
 $(document).ready(function(){
 
     $('#btnModalSave').click(function(event){
@@ -15,7 +16,7 @@ $(document).ready(function(){
             dataType : 'json',
             success : function(json){
                       if(json.success == "true"){
-                      alert("저장되었습니다.");
+                      alert("저장 되었습니다.");
                       }
                       else{
                       alert("저장 실패!");
