@@ -30,10 +30,11 @@ public class MainController {
         return mav;
     }
 
-    @GetMapping(value = "/user/list")
+    /*@GetMapping(value = "/user/list")
     public String list()
     {
+
         return "user/list";
-    }
+    }*/
 
 }

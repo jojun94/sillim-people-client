@@ -8,10 +8,10 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>net.jojun.sillimpeople</groupId>
-    <artifactId>sillim-people-client</artifactId>
+    <groupId>net.jojun.firends</groupId>
+    <artifactId>firends-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sillim-people-client</name>
+    <name>firends-client</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -27,7 +27,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
