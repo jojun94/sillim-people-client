@@ -11,7 +11,7 @@ $(document).ready(function(){
                    };
         $.ajax({
             type: 'POST',
-            url: 'AddUser',
+            url: '/user',
             data : userData,
             dataType : 'json',
             success : function(json){

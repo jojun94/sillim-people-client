@@ -33,21 +33,21 @@
         <table class = "table" >
             <thead class = "thead-dark">
                 <tr>
-                    <th>선택</th>
-                    <th>순번</th>
-                    <th>이름</th>
-                    <th>나이</th>
-                    <th>지역</th>
+                    <th class="text-center">선택</th>
+                    <!--<th>순번</th>-->
+                    <th class="text-center">이름</th>
+                    <th class="text-center">나이</th>
+                    <th class="text-center">지역</th>
                 </tr>
             </thead>
             <tbody>
             <tr>
                 <tr th:each="item: ${list}">
-                    <td><input type="radio" aria-label="Radio button for following text input" th:id="${item.idx}"> </td>
-                    <td th:text="${item.idx}"></td>
-                    <td th:text="${item.name}"></td>
-                    <td th:text="${item.age}"></td>
-                    <td th:text="${item.locale}"></td>
+                    <td class="text-center"><input type="checkbox" aria-label="Radio button for following text input"  th:id="${item.idx}" data-toggle="modal" data-target="#popUserModal" name="chk" onclick="pop();"> </td>
+                    <!--<td th:text="${item.idx}"></td>-->
+                    <td th:text="${item.name}" class="text-center"></td>
+                    <td th:text="${item.age}" class="text-center"></td>
+                    <td th:text="${item.locale}" class="text-center"></td>
                 </tr>
                 <!--<td colspan="4" th:text="${data}"></td>-->
             </tr>
@@ -57,5 +57,49 @@
 
       <!--<h2><span th:text="${data.data}"></span></h2>-->
 
+        <!-- Modal -->
+        <div class="modal fade" id="popUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">선택 정보</h5>
+                        <button type="button" class="close exit" data-dismiss="modal" aria-label="Close" name="exit">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">구분</th>
+                                <th scope="col">정보</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>이름</td>
+                                <td id="modalName"></td>
+                            </tr>
+                            <tr>
+                                <td>나이</td>
+                                <td id="modalAge"></td>
+                            </tr>
+                            <tr>
+                                <td>지역</td>
+                                <td id="modalLocale"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary exit" data-dismiss="modal">창 닫기</button>
+                        <button type="button" class="btn btn-primary" id="btnModalUpdate">수정하기</button>
+                        <button type="button" class="btn btn-primary" id="btnModalDelete" >삭제하기</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 </body>
 </html>

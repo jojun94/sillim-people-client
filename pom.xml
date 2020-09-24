@@ -8,21 +8,19 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>net.jojun.firends</groupId>
     <artifactId>firends-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>firends-client</name>
-    <description>Demo project for Spring Boot</description>
+    <description>TOY PROJECT For REST API Client using Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -42,11 +40,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -74,4 +68,14 @@
         </plugins>
     </build>
 
+    <developers>
+        <developer>
+            <id>jojun9475</id>
+            <name>조준형</name>
+            <email>jojun9475@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
 </project>
