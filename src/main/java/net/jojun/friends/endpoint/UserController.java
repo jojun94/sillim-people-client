@@ -29,9 +29,6 @@ public class UserController {
     String baseUrl = "http://127.0.0.1:9080/";
 
 
-
-
-
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String user_add(@RequestParam( value="user_name" , required=true) String name,
                            @RequestParam( value="user_age" , required=true) String age,
